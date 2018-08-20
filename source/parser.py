@@ -2,6 +2,7 @@ import xmltodict
 import ast
 import os
 import logging
+import argparse
 
 
 class CoverityXMLParser:
@@ -101,7 +102,14 @@ class CoverityXMLParser:
 
 
 def main():
-    a = CoverityXMLParser(path_to_cov_xml='../index.xml')
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument('-n', action='store', dest='input_index', default='index.xml',
+                                 help='New input index.xml file created by cov-analysis')
+    argument_parser.add_argument('-o', action='store', dest='data_file', default='results.dat',
+                                 help='Data file for comparing the index against')
+    results = argument_parser.parse_args()
+    a = CoverityXMLParser(path_to_cov_xml=results.input_index,
+                          results_file=results.data_file)
     a.generate_results()
 
 
