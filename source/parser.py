@@ -107,6 +107,8 @@ def main():
                                  help='New input index.xml file created by cov-analysis')
     argument_parser.add_argument('-o', action='store', dest='data_file', default='results.dat',
                                  help='Data file for comparing the index against')
+    argument_parser.add_argument('-l', action='store', dest='log_file', default='cvt_py_results.log',
+                                 help="Log file where caught errors are stored")
     results = argument_parser.parse_args()
     a = CoverityXMLParser(path_to_cov_xml=results.input_index,
                           results_file=results.data_file)
