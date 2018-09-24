@@ -106,13 +106,13 @@ class CoverityXMLParser:
         if not self.old_results_exists():
             print "Generating new data table"
             self.save_results()
-        if self.compare_results(self.get_old_results(), new_results):
+        elif self.compare_results(self.get_old_results(), new_results):
             print "No new errors. Replacing old data table."
             self.save_results()
         else:
             for i in self.errors:
                 print i
-            sys.exit("Found static analysis {} errors".format(len(self.errors)))
+            sys.exit("Found {} static analysis error(s)".format(len(self.errors)))
 
 
 def main():
