@@ -43,8 +43,8 @@ class CoverityXMLParser:
         return os.path.isfile(self.results_file)
 
     def save_results(self,):
-        with open(self.results_file, "w") as fd:
-            if self.writable:
+        if self.writable:
+            with open(self.results_file, "w") as fd:
                 print("Updating Table")
                 fd.write(str(self.get_summary()))
 
